@@ -46,6 +46,12 @@
       ]
     },
     {
+      "operatingsystem": "Amazon",
+      "operatingsystemrelease": [
+        "2017.09"
+      ]
+    },
+    {
       "operatingsystem": "Ubuntu",
       "operatingsystemrelease": [
         "Precise",
