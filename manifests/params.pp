@@ -116,6 +116,24 @@ class wazuh::params {
             '/var/log/httpd/error_log'  => 'apache'
           }
           case $::operatingsystem {
+            'Amazon': {
+              if ( $::operatingsystemrelease =~ /^2017.*/ ) {
+                $wodle_openscap_content = {
+                  'ssg-fedora-ds.xml' => {
+                    type => 'xccdf',
+                    profiles => ['xccdf_org.ssgproject.content_profile_standard', 'xccdf_org.ssgproject.content_profile_common',]
+                },
+              }
+              }
+              if ( $::operatingsystemrelease =~ /^7.*/ ) {
+                $wodle_openscap_content = {
+                  'ssg-centos-7-ds.xml' => {
+                    'type' => 'xccdf',
+                    profiles => ['xccdf_org.ssgproject.content_profile_pci-dss', 'xccdf_org.ssgproject.content_profile_common',]
+                }
+              }
+              }
+            }
             'CentOS': {
               if ( $::operatingsystemrelease =~ /^6.*/ ) {
                 $wodle_openscap_content = {
